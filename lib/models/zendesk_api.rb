@@ -1,5 +1,6 @@
 require 'httparty'
 # To connect with zendeskapi and to request for tickets using url endpoints
+# frozen_string_literal: true
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets
   # Here tickets function list upto 25 tickets in a page
