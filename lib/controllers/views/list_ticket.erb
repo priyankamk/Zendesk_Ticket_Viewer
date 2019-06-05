@@ -1,12 +1,13 @@
 <h4>Your unsolved tickets</h3>
 <p class="text-secondary"><%= @count %> Tickets</p>
 <% if @next_page %>
-  <a href="/tickets?page=<%= params[:page].to_i + 1 %>">Next |</a>
+  <a href="/tickets?page=<%= params[:page].to_i + 1 %>" class="btn btn-outline-warning" role="button">Next</a>
 <% end%>
 <% if @previous_page %>
-  <a href="/tickets?page=<%= params[:page].to_i - 1 %>">Previous</a>
+  <a href="/tickets?page=<%= params[:page].to_i - 1 %>" class="btn btn-outline-warning" role="button">Previous</a>
 <% end %>
-
+<br>
+<br>
 <table class="table">
   <thead class="bg-warning">
     <tr>
