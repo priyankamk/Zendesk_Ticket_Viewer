@@ -9,7 +9,7 @@ RSpec.describe ZendeskApi do
 
   # Testing list tickets function from zendesk_api - #tickets
   describe '#tickets' do
-    # creating a exact dummy response to match/test the endpoints
+    # created a exact dummy response to match/test the endpoints
     let(:ticket_response) do
       {
         'tickets' => [
@@ -47,7 +47,7 @@ RSpec.describe ZendeskApi do
       )
     end
 
-    describe 'To check the endpoints read 2nd page' do
+    describe 'To check the endpoints reads 2nd page' do
       let(:page) { 2 }
 
       it 'should check for 2nd page' do
