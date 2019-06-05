@@ -12,11 +12,12 @@ get '/tickets' do
   response = ZendeskApi.new.tickets(params[:page])
   @tickets = response.dig('tickets')
   @next_page = response.dig('next_page')
-  @previous_page = response.dig('pervious_page')
+  @previous_page = response.dig('previous_page')
+  @count = response.dig('count')
   erb :list_ticket
 end
 
-get '/ticktes/:id' do
-  @ticket = ZendeskApi.new.ticket(params['id'])
+get '/tickets/:id' do
+  @ticket = ZendeskApi.new.ticket(id: params['id'])
   erb :show_ticket
 end
