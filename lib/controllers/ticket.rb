@@ -3,21 +3,40 @@ require 'sinatra/reloader'
 require_relative '../models/zendesk_api'
 
 get '/' do
-  erb :home
+  begin
+    erb :home
+  rescue SocketError
+    erb :internet_offline_error
+  rescue Errno::ECONNREFUSED
+    erb :blocked_by_administrator_error
+  end
 end
 
 # Written response because to dig into all tickets
-# as it is a array of hash, nextpage and previous page.
+# as it is a array of hash. 
+# To check nextpage,previous page and count.
 get '/tickets' do
-  response = ZendeskApi.new.tickets(params[:page])
-  @tickets = response.dig('tickets')
-  @next_page = response.dig('next_page')
-  @previous_page = response.dig('previous_page')
-  @count = response.dig('count')
-  erb :list_ticket
+  begin
+    response = ZendeskApi.new.tickets(params[:page])
+    @tickets = response.dig('tickets')
+    @next_page = response.dig('next_page')
+    @previous_page = response.dig('previous_page')
+    @count = response.dig('count')
+    erb :list_ticket
+  rescue SocketError
+    erb :internet_offline_error
+  rescue Errno::ECONNREFUSED
+    erb :blocked_by_administrator_error
+  end
 end
 
 get '/tickets/:id' do
-  @ticket = ZendeskApi.new.ticket(id: params['id'])
-  erb :show_ticket
+  begin
+    @ticket = ZendeskApi.new.ticket(id: params['id'])
+    erb :show_ticket
+  rescue SocketError
+    erb :internet_offline_error
+  rescue Errno::ECONNREFUSED
+    erb :blocked_by_administrator_error
+  end
 end

@@ -80,7 +80,7 @@ RSpec.describe 'Ticket routes' do
       }
     end
 
-    # defalt id is 1
+    # default id is 1
     let(:id) { 1 }
 
     before do
