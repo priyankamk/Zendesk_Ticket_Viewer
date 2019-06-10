@@ -1,18 +1,33 @@
 require 'httparty'
-# To connect with zendeskapi and to request for tickets using url endpoints
 # frozen_string_literal: true
+# To connect with zendeskapi and to request for tickets using url endpoints
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets
   # Here tickets function list upto 25 tickets in a page
+  ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
+
   def tickets(page = 1)
-    endpoint = "https://priyankamukundmk.zendesk.com/api/v2/tickets.json?page=#{page}&per_page=25"
-    HTTParty.get(endpoint, basic_auth: auth)
+    endpoint = "#{ZENDESK_API_TICKET_URL}?page=#{page}&per_page=25"
+    response = HTTParty.get(endpoint, basic_auth: auth)
+    if response.code == 404 || response.code == 401
+      return {
+        'tickets' => [], 'total' => 0, 'error_message' => response['error']
+      }
+    end
+    return response
   end
 
   # Here ticket function show's individual ticket
   def ticket(id:)
-    HTTParty.get(
-      "https://priyankamukundmk.zendesk.com/api/v2/tickets/#{id}.json", basic_auth: auth).dig('ticket')
+    response = HTTParty.get(
+      "https://priyankamukundmk.zendesk.com/api/v2/tickets/#{id}.json", basic_auth: auth
+    )
+    if response.code == 404 || response.code == 401
+      return {
+        'tickets' => [], 'total' => 0, 'error_message' => response['error']
+      }
+    end
+    return response.dig('ticket')
   end
 
   private

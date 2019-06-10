@@ -1,30 +1,40 @@
-<h4>Your unsolved tickets</h3>
-<p class="text-secondary"><%= @count %> Tickets</p>
-<% if @next_page %>
-  <a href="/tickets?page=<%= params[:page].to_i + 1 %>" class="btn btn-outline-warning" role="button">Next</a>
-<% end%>
-<% if @previous_page %>
-  <a href="/tickets?page=<%= params[:page].to_i - 1 %>" class="btn btn-outline-warning" role="button">Previous</a>
-<% end %>
-<br>
-<br>
-<table class="table">
-  <thead class="bg-warning">
-    <tr>
-      <th>Subject</th>
-      <th>Requester ID</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @tickets.each do |ticket| %>
-    <tr class="shadow p-3 mb-5 bg-white rounded">
-      <td >
-        <a href="/tickets/<%=ticket['id']%>"><%= ticket.dig('subject')%></a>
-      </td>
-      <td><%= ticket.dig('requester_id')%></td>
-      <td><%= ticket.dig('status')%></td>
+<% if @error.nil? %>
+  <h4>Your unsolved tickets</h3>
+  <p class="text-secondary"><%= @count %> Tickets</p>
+  <% if @next_page %>
+    <a href="/tickets?page=<%= params[:page].to_i + 1 %>" class="btn btn-outline-warning" role="button">Next</a>
+  <% end %>
+  <% if @previous_page %>
+    <a href="/tickets?page=<%= params[:page].to_i - 1 %>" class="btn btn-outline-warning" role="button">Previous</a>
+  <% end %>
+  <br>
+  <br>
+  <% if @tickets.size == 0 %> 
+    <div class="alert alert-danger" role="alert">
+      <p class="text-center"> No tickets found </p>
+    </div>
+  <% else %>
+  <table class="table">
+    <thead class="bg-warning">
+      <tr>
+        <th>Subject</th>
+        <th>Requester ID</th>
+        <th>Status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr class="shadow p-3 mb-5 bg-white rounded">
+          <td >
+            <a href="/tickets/<%=ticket['id']%>"><%= ticket.dig('subject')%></a>
+          </td>
+          <td><%= ticket.dig('requester_id')%></td>
+          <td><%= ticket.dig('status')%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+<% else %>
+  <%= @error %>
+<% end %>

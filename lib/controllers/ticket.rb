@@ -13,8 +13,8 @@ get '/' do
 end
 
 # Written response because to dig into all tickets
-# as it is a array of hash. 
-# To check nextpage,previous page and count.
+# as it is a array of hash.
+# To check nextpage, previous page and count.
 get '/tickets' do
   begin
     response = ZendeskApi.new.tickets(params[:page])
@@ -22,6 +22,7 @@ get '/tickets' do
     @next_page = response.dig('next_page')
     @previous_page = response.dig('previous_page')
     @count = response.dig('count')
+    @error = response['error_message']
     erb :list_ticket
   rescue SocketError
     erb :internet_offline_error
@@ -32,7 +33,8 @@ end
 
 get '/tickets/:id' do
   begin
-    @ticket = ZendeskApi.new.ticket(id: params['id'])
+    @ticket = ZendeskApi.new.ticket(id: params['id'].to_i)
+    @error = @ticket['error_message']
     erb :show_ticket
   rescue SocketError
     erb :internet_offline_error

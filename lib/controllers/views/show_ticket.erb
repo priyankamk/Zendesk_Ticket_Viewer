@@ -1,48 +1,60 @@
-<h1><%= @ticket['subject'] %></h1> 
-<a href="/tickets" class="btn btn-outline-warning" role="button">Back to all tickets</a>
+<% if @error.nil? %>
+  <h1><%= @ticket['subject'] %></h1> 
+  <a href="/tickets" class="btn btn-outline-warning" role="button">Back to all tickets</a>
 
-<br>
-<br>
-<dl class="row">
-  <p>
-    <dt class="col-sm-2">
-      <strong>Description </strong>
-    </dt>
-   <dd class="col-sm-9">
-      <%= @ticket['description']%>
-   </dd>
-  </p>
-  <p>
-    <dt class="col-sm-2">
-      <strong>Requester id </strong>
-    </dt>
+  <br>
+  <br>
+  <dl class="row">
+    <p>
+      <dt class="col-sm-2">
+        <strong>ID </strong>
+      </dt>
     <dd class="col-sm-9">
-      <%= @ticket['requester_id']%>
+        <%= @ticket['id']%>
     </dd>
-  </p>
-  <p>
-    <dt class="col-sm-2">
-      <strong>Created at</strong>
-    </dt>
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Description </strong>
+      </dt>
     <dd class="col-sm-9">
-      <%= @ticket['created_at']%>
+        <%= @ticket['description']%>
     </dd>
-  </p>
-  <p>
-    <dt class="col-sm-2">
-      <strong>Updated at</strong>
-    </dt>
-    <dd class="col-sm-9">
-      <%= @ticket['updated_at']%>
-    </dd>
-  </p>
-  <p>
-    <dt class="col-sm-2">
-      <strong>Status</strong>
-    </dt>
-    <dd class="col-sm-9">
-      <%= @ticket['status']%>
-    </dd>
-  </p>
-<dl class="row">
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Requester id </strong>
+      </dt>
+      <dd class="col-sm-9">
+        <%= @ticket['requester_id']%>
+      </dd>
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Created at</strong>
+      </dt>
+      <dd class="col-sm-9">
+        <%= @ticket['created_at']%>
+      </dd>
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Updated at</strong>
+      </dt>
+      <dd class="col-sm-9">
+        <%= @ticket['updated_at']%>
+      </dd>
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Status</strong>
+      </dt>
+      <dd class="col-sm-9">
+        <%= @ticket['status']%>
+      </dd>
+    </p>
+  <dl class="row">
+<% else %>
+  <%= @error %>
+<% end %>
 

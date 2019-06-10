@@ -64,7 +64,6 @@ RSpec.describe 'Ticket routes' do
     # It checking status to be HTTP 200
     it 'should check for tickets response' do
       get '/tickets', page: 1
-      # puts last_response.body
       expect(last_response).to be_ok
     end
   end
@@ -103,7 +102,6 @@ RSpec.describe 'Ticket routes' do
     # It checking status to be HTTP 200
     it 'should display individual ticket response status' do
       get '/tickets/1'
-      # puts last_response.body
       expect(last_response).to be_ok
     end
   end
