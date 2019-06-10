@@ -1,7 +1,6 @@
 <% if @error.nil? %>
   <h1><%= @ticket['subject'] %></h1> 
-  <a href="/tickets" class="btn btn-outline-warning" role="button">Back to all tickets</a>
-
+  <a href="/tickets?page=1" class="btn btn-outline-warning" role="button">Back to all tickets</a>
   <br>
   <br>
   <dl class="row">
@@ -54,7 +53,10 @@
       </dd>
     </p>
   <dl class="row">
+   
 <% else %>
   <%= @error %>
 <% end %>
+
+
 
