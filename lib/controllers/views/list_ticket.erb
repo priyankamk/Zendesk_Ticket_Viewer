@@ -1,17 +1,41 @@
 <% if @error.nil? %>
   <h4>Your unsolved tickets</h3>
   <p class="text-secondary"><%= @count %> Tickets</p>
-  <% if @next_page %>
-    <a href="/tickets?page=<%= params[:page].to_i + 1 %>" class="btn btn-outline-warning" role="button">Next</a>
-  <% end %>
-  <% if @previous_page %>
-    <a href="/tickets?page=<%= params[:page].to_i - 1 %>" class="btn btn-outline-warning" role="button">Previous</a>
-  <% end %>
-  <br>
-  <br>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <% if @previous_page %>
+        <li class="page-item">
+          <a class="page-link" href="/tickets?page=<%= params[:page].to_i - 1 %>" >Previous</a>
+        </li>
+      <% end %>
+
+       <li class="page-item">
+        <a class="page-link" href="/tickets?page=<%= @first_page %>"> <%= @first_page %></a>
+      </li>
+
+      <% if @current_page == 1 || @current_page == 9 %>
+        <a href="/tickets?page=<%= @current_page %>"></a>
+      <% else %>
+        <li class="page-item">
+          <a class="page-link" href="/tickets?page=<%= @current_page %>"> <%= @current_page %></a>
+        </li>
+      <% end %>
+
+      <li class="page-item">
+        <a class="page-link" href="/tickets?page=<%= @last_page %>"> <%= @last_page %></a>
+      </li>
+
+      <% if @next_page %>
+      <li class="page-item">
+        <a class="page-link" href="/tickets?page=<%= params[:page].to_i + 1 %>">Next</a>
+      </li>
+      <% end %>
+  </ul>
+</nav>
   <% if @tickets.size == 0 %> 
     <div class="alert alert-danger" role="alert">
-      <p class="text-center"> No tickets found </p>
+      <h5 class="text-center mt-1"> No tickets found </h5>
     </div>
   <% else %>
   <table class="table">

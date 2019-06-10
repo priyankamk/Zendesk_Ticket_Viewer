@@ -14,14 +14,17 @@ end
 
 # Written response because to dig into all tickets
 # as it is a array of hash.
-# To check nextpage, previous page and count.
 get '/tickets' do
   begin
     response = ZendeskApi.new.tickets(params[:page])
+    @first_page = 1
+    @no_of_tickets = 25
     @tickets = response.dig('tickets')
+    @count = response.dig('count')
+    @last_page = @count / @no_of_tickets + 1 if @count % @no_of_tickets != 0
+    @current_page = params[:page].nil? ? @first_page : params[:page].to_i
     @next_page = response.dig('next_page')
     @previous_page = response.dig('previous_page')
-    @count = response.dig('count')
     @error = response['error_message']
     erb :list_ticket
   rescue SocketError
