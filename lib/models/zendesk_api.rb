@@ -14,18 +14,20 @@ class ZendeskApi
         'tickets' => [], 'total' => 0, 'error_message' => response['error']
       }
     end
+    return response
   end
 
   # Here ticket function show's individual ticket
   def ticket(id:)
     response = HTTParty.get(
       "https://priyankamukundmk.zendesk.com/api/v2/tickets/#{id}.json", basic_auth: auth
-    ).dig('ticket')
+    )
     if response.code == 404 || response.code == 401
       return {
         'tickets' => [], 'total' => 0, 'error_message' => response['error']
       }
     end
+    return response.dig('ticket')
   end
 
   private

@@ -34,8 +34,6 @@ end
 get '/tickets/:id' do
   begin
     @ticket = ZendeskApi.new.ticket(id: params['id'].to_i)
-    # return status 404 if @ticket.nil?
-
     @error = @ticket['error_message']
     erb :show_ticket
   rescue SocketError
