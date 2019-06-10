@@ -42,7 +42,7 @@ This Application allows you to do the following features:
 - The challenge is to create a customer service tool using Zendesk API calls by generating tickets to display.
 - I have used RSpec and web mock to test the JSON request as I can create a dummy JSON response and test with the actual output.
 - To add pagination and check out 1st page, last page, current page, next page and previous page.
-- Exception error handling
+- Exception error handling.
 
 ## My Approach
 
@@ -51,12 +51,12 @@ This Application allows you to do the following features:
 - I separated my concern’s inside lib folder and I tried to stick with object-oriented MVC design to keep my code neat and clean. In which ZendeskApi class deals with API calls and ticket controller displays the user interface.
 - The Zendesk API returns 25 tickets per page - `http://localhost:4567/tickets?page=1`. I have accounted for having more tickets by making multiple API calls, I did that using postman but only making the request when the extra records are needed.
 - I have added pagination in which user can check next page, previous page, current page and last page.
-- I used RSpec for happy path testing and webmock to test with actual JSON output.
+- I have used RSpec for happy path testing and webmock to test with actual JSON output.
 - This is the first time i’m experimenting with exception handling, I researched a lot and implemented basic error handling and display response message when an error occurs.
 
 ## Learning
 
-- For Testing
+- For Sinatra Testing
   http://sinatrarb.com/testing.html
-- For exception handling - Basic understanding what is error handling
+- For Exception handling - Basic understanding blog post about Error handling.
   https://stackify.com/web-api-error-handling/
