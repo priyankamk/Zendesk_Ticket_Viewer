@@ -50,9 +50,9 @@ This Application allows you to do the following features:
 - I am using HTTParty gem to make the API calls using Zendeskapi `https://priyankamukundmk.zendesk.com/api/v2/tickets` and generate the tickets.
 - I separated my concern’s inside lib folder and I tried to stick with object-oriented MVC design to keep my code neat and clean. In which ZendeskApi class deals with API calls and ticket controller displays the user interface.
 - The Zendesk API returns 25 tickets per page - `http://localhost:4567/tickets?page=1`. I have accounted for having more tickets by making multiple API calls, I did that using postman but only making the request when the extra records are needed.
-- I have added pagination in which user can check next page, previous page, current page and last page.
-- I have used RSpec for happy path tests and webmock to test with actual JSON output.
-- I have experimented with exception handling, I researched and implemented basic error handling and display response message when an error occurs.(eg: when API being unavailable)
+- Added pagination in which user can click next page, previous page, current page and last page.
+- RSpec for happy path tests and webmock to test with actual JSON output.
+- Experimented with exception handling, I researched and implemented basic error handling and display response message when an error occurs.(eg: when API being unavailable)
 
 ## Learning
 

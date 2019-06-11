@@ -22,8 +22,8 @@ RSpec.describe ZendeskApi do
     # default page starts with 1st page
     let(:page) { 1 }
 
-    # Used webmok - it disable the network conneting to api
-    # and it keep a record of all HTTP calls, so that it can look up later
+    # Used webmock - it disable the network conneting to api
+    # and it keep a record of all HTTP calls, so that it can look up later.
     before do
       stub_request(:get, "https://priyankamukundmk.zendesk.com/api/v2/tickets.json?page=#{page}&per_page=25")
         .with(

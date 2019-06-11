@@ -24,7 +24,9 @@ RSpec.describe 'Ticket routes' do
     it 'should match the display ticket link' do
       get '/'
       expect(last_response).to be_ok
-      expect(last_response).to match %r{<a href="/tickets" class="btn btn-warning">Display Tickets</a>}
+      expect(last_response).to match %r{
+        <a href="/tickets" class="btn btn-warning">Display Tickets</a>
+      }
     end
   end
 
