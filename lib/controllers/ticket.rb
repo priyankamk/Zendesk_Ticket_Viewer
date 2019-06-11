@@ -34,7 +34,9 @@ end
 
 get '/tickets/:id' do
   @ticket = ZendeskApi.new.ticket(id: params['id'].to_i)
+  response = ZendeskApi.new.tickets(params[:page])
   @error = @ticket['error_message']
+  @count = response.dig('count')
   erb :show_ticket
 rescue SocketError
   erb :internet_offline_error

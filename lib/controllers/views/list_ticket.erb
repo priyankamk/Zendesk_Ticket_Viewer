@@ -59,6 +59,24 @@
     </tbody>
   </table>
   <% end %>
-<% else %>
-  <%= @error %>
+  <br>
+<% elsif @error == "RecordNotFound" %>
+  <div class="alert alert-danger mt-5" role="alert">  
+    <h3 class="alert-heading">Oh noes!! The request Ticket ID details not in record.</h3>
+    <p>Please Enter in Ticket ID within range.</p>
+    <hr>
+    <p class="mb-0">Ticket ID range from 1 - <%= @count %>.</p>
+  </div>
+<% elsif @error == "InvalidEndpoint" %>
+  <div class="alert alert-danger mt-5" role="alert">  
+    <h3 class="alert-heading">Oh noes!! This is not a ValidEndpoint.</h3>
+    <p>Please Enter in Ticket ID</p>
+    <hr>
+    <p class="mb-0">Ticket ID range from 1 - <%= @count %>.</p>
+  </div>
+<% elsif @error == "Couldn't authenticate you" %>
+  <div class="alert alert-danger mt-5" role="alert">
+    <h3 class="alert-heading">Sorry, Couldn't authenticate you.</h3>
+    <hr>
+    <p class="mb-0">Please request authentication credential from the author.</p>
 <% end %>
