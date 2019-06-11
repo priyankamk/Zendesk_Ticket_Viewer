@@ -6,7 +6,7 @@
   <dl class="row">
     <p>
       <dt class="col-sm-2">
-        <strong>ID </strong>
+        <strong>Ticket ID: </strong>
       </dt>
     <dd class="col-sm-9">
         <%= @ticket['id']%>
@@ -14,15 +14,7 @@
     </p>
     <p>
       <dt class="col-sm-2">
-        <strong>Description </strong>
-      </dt>
-    <dd class="col-sm-9">
-        <%= @ticket['description']%>
-    </dd>
-    </p>
-    <p>
-      <dt class="col-sm-2">
-        <strong>Requester id </strong>
+        <strong>Requester ID: </strong>
       </dt>
       <dd class="col-sm-9">
         <%= @ticket['requester_id']%>
@@ -30,30 +22,65 @@
     </p>
     <p>
       <dt class="col-sm-2">
-        <strong>Created at</strong>
+        <strong>Assignee ID: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['created_at']%>
+        <%= @ticket['assignee_id']%>
       </dd>
     </p>
     <p>
       <dt class="col-sm-2">
-        <strong>Updated at</strong>
+        <strong>Ticket Created At: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['updated_at']%>
+       <%= Time.parse(@ticket["created_at"]).strftime("%Y/%b/%d %H:%M:%S") %>
       </dd>
     </p>
     <p>
       <dt class="col-sm-2">
-        <strong>Status</strong>
+        <strong>Ticket Updated At: </strong>
+      </dt>
+      <dd class="col-sm-9">
+        <%= Time.parse(@ticket["updated_at"]).strftime("%Y/%b/%d %H:%M:%S") %>
+      </dd>
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Status: </strong>
       </dt>
       <dd class="col-sm-9">
         <%= @ticket['status']%>
       </dd>
     </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Ticket Description: </strong>
+      </dt>
+      <dd class="col-sm-9">
+          <%= @ticket['description']%>
+      </dd>
+    </p>
+    <p>
+      <dt class="col-sm-2">
+        <strong>Tags: </strong>
+      </dt>
+      <dd class="col-sm-9">
+          <%= @ticket['tags'].map { |word| word.to_s.prepend("#")}.join(' ') %>
+      </dd>
+    </p>
   <dl class="row">
-   
-<% else %>
-  <%= @error %>
+<% elsif @error == "RecordNotFound" %>
+  <div class="alert alert-danger mt-5" role="alert">  
+    <h3 class="alert-heading">Oh noes!! The requested Ticket ID not found.</h3>
+  </div>
+<% elsif @error == "InvalidEndpoint" %>
+  <div class="alert alert-danger mt-5" role="alert">  
+    <h3 class="alert-heading">Oh noes!! This is not a ValidEndpoint.</h3>
+  </div>
+<% elsif @error == "Couldn't authenticate you" %>
+  <div class="alert alert-danger mt-5" role="alert">
+    <h3 class="alert-heading">Sorry, Couldn't authenticate you.</h3>
+    <hr>
+    <p class="mb-0">Please request authentication credential from the author.</p>
 <% end %>
+

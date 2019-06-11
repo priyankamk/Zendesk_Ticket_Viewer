@@ -6,6 +6,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 gem 'httparty', '~> 0.17.0'
+gem 'rack-test', '~> 1.1'
 gem 'rspec', '~> 3.8'
 gem 'sinatra', '~> 2.0', '>= 2.0.5'
 gem 'sinatra-reloader', '~> 1.0'

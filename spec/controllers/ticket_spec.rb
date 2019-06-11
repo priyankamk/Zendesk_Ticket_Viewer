@@ -24,9 +24,7 @@ RSpec.describe 'Ticket routes' do
     it 'should match the display ticket link' do
       get '/'
       expect(last_response).to be_ok
-      expect(last_response).to match %r{
-        <a href="/tickets" class="btn btn-warning">Display Tickets</a>
-      }
+      expect(last_response).to match %r{<a href="/tickets" class="btn btn-warning">Display Tickets</a>}
     end
   end
 
@@ -36,8 +34,14 @@ RSpec.describe 'Ticket routes' do
       {
         'tickets' => [
           'url' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets/1.json',
-          'created_at' => '2019-05-28T07:00:12Z',
-          'status' => 'open'
+          'created_at' => '2019-06-04T00:06:55Z',
+          'status' => 'open',
+          'assignee_id' => 381_279_611_494,
+          'tags' => %w[
+            sample
+            support
+            zendesk
+          ]
         ],
         'next_page' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json?page=1&per_page=25',
         'previous_page' => 0,
@@ -76,8 +80,17 @@ RSpec.describe 'Ticket routes' do
       {
         'ticket' => {
           'url' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets/1.json',
+          'id' => 1,
           'created_at' => '2019-05-28T07:00:12Z',
-          'status' => 'open'
+          'updated_at' => '2019-06-04T00:06:56Z',
+          'status' => 'open',
+          'requester_id' => 381_345_583_913,
+          'assignee_id' => 381_279_611_494,
+          'tags' => %w[
+            sample
+            support
+            zendesk
+          ]
         }
       }
     end

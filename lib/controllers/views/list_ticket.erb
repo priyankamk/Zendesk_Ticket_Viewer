@@ -59,6 +59,18 @@
     </tbody>
   </table>
   <% end %>
-<% else %>
-  <%= @error %>
+  <br>
+<% elsif @error == "RecordNotFound" %>
+  <div class="alert alert-danger mt-5" role="alert">  
+    <h3 class="alert-heading">Oh noes!! The requested Ticket ID not found.</h3>
+  </div>
+<% elsif @error == "InvalidEndpoint" %>
+  <div class="alert alert-danger mt-5" role="alert">  
+    <h3 class="alert-heading">Oh noes!! This is not a ValidEndpoint.</h3>
+  </div>
+<% elsif @error == "Couldn't authenticate you" %>
+  <div class="alert alert-danger mt-5" role="alert">
+    <h3 class="alert-heading">Sorry, Couldn't authenticate you.</h3>
+    <hr>
+    <p class="mb-0">Please request authentication credential from the author.</p>
 <% end %>
