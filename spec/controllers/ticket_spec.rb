@@ -36,12 +36,12 @@ RSpec.describe 'Ticket routes' do
           'url' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets/1.json',
           'created_at' => '2019-06-04T00:06:55Z',
           'status' => 'open',
+          'assignee_id' => 381_279_611_494,
           'tags' => %w[
             sample
             support
             zendesk
-          ],
-          'assignee_id' => '381279611494'
+          ]
         ],
         'next_page' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json?page=1&per_page=25',
         'previous_page' => 0,
@@ -82,13 +82,15 @@ RSpec.describe 'Ticket routes' do
           'url' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets/1.json',
           'id' => 1,
           'created_at' => '2019-05-28T07:00:12Z',
+          'updated_at' => '2019-06-04T00:06:56Z',
           'status' => 'open',
+          'requester_id' => 381_345_583_913,
+          'assignee_id' => 381_279_611_494,
           'tags' => %w[
             sample
             support
             zendesk
-          ],
-          'assignee_id' => '381279611494'
+          ]
         }
       }
     end
