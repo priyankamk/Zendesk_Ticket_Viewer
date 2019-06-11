@@ -37,8 +37,9 @@ RSpec.describe 'Ticket routes' do
           'created_at' => '2019-05-28T07:00:12Z',
           'status' => 'open'
         ],
-        'next_page' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json?page=2&per_page=25',
-        'previous_page' => 0
+        'next_page' => 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json?page=1&per_page=25',
+        'previous_page' => 0,
+        'count' => 201
       }
     end
 

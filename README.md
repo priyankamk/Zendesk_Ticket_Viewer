@@ -14,11 +14,11 @@ This Application allows you to do the following features:
 - Clone this repository: `git@github.com:priyankamk/Zendesk_Ticket_Viewer.git` to your local machine through the command line.
 - Ensure you have version 2.6.2 of Ruby installed. The version can be checked by running `ruby -v` in the terminal. If not, you can download ruby here https://www.ruby-lang.org/en/downloads/
 
-### Install dependencies:
+### Install Dependencies:
 
 - cd into the repository and then run `bundle install` to install dependencies.
 
-### Run server:
+### Run Server:
 
 - Enter `bundle exec ruby lib/controllers/ticket.rb` to start the application.
 - Open url in the browser - http://localhost:4567
@@ -51,8 +51,8 @@ This Application allows you to do the following features:
 - I separated my concern’s inside lib folder and I tried to stick with object-oriented MVC design to keep my code neat and clean. In which ZendeskApi class deals with API calls and ticket controller displays the user interface.
 - The Zendesk API returns 25 tickets per page - `http://localhost:4567/tickets?page=1`. I have accounted for having more tickets by making multiple API calls, I did that using postman but only making the request when the extra records are needed.
 - I have added pagination in which user can check next page, previous page, current page and last page.
-- I have used RSpec for happy path testing and webmock to test with actual JSON output.
-- This is the first time i’m experimenting with exception handling, I researched a lot and implemented basic error handling and display response message when an error occurs.
+- I have used RSpec for happy path tests and webmock to test with actual JSON output.
+- I have experimented with exception handling, I researched and implemented basic error handling and display response message when an error occurs.(eg: when API being unavailable)
 
 ## Learning
 
