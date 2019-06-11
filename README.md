@@ -35,6 +35,7 @@ This Application allows you to do the following features:
 - httparty
 - Rspec
 - WebMock
+- rack-test
 - Bootstrap
 
 ## The Challenge
