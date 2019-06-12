@@ -12,7 +12,9 @@ This Application allows you to do the following features:
 ## Installation Instruction
 
 - Clone this repository: `git@github.com:priyankamk/Zendesk_Ticket_Viewer.git` to your local machine through the command line.
-- Ensure you have version 2.6.2 of Ruby installed. The version can be checked by running `ruby -v` in the terminal. If not, you can download ruby here https://www.ruby-lang.org/en/downloads/
+- Make sure all commands you give is run via `bundle exec` including things like rspec.
+- Ensure you have version 2.6.2 of Ruby installed. For rbenv, if you run `rbenv local 2.6.2`
+  It should generate a file. To check `git status` just commit it in. It will generate a .ruby-version file.
 
 ### Install Dependencies:
 
@@ -25,8 +27,7 @@ This Application allows you to do the following features:
 
 ### Testing:
 
-- To test the ticket.rb run `rspec spec/controllers/ticket_spec.rb`
-- To test the zendesk_api.rb run `rspec spec/models/zendesk_api_spec.rb`
+- To test the zendesk_api.rb run `bundle exec rspec spec/models/zendesk_api_spec.rb`
 
 ## Build with
 
@@ -47,6 +48,7 @@ This Application allows you to do the following features:
 
 ## My Approach
 
+- I used a pull request based approach to make changes. You can check my pull requests against this repo here `https://github.com/priyankamk/Zendesk_Ticket_Viewer/pulls?q=is%3Apr+is%3Aclosed`
 - I decided to build a web-based application to make UI simple and easy to use. I chose to write the application with Ruby and Sinatra, as I felt the rails would do too much of 'Heavy Lifting' and also allow me to keep the application more lightweight and simplified.
 - I am using HTTParty gem to make the API calls using Zendeskapi `https://priyankamukundmk.zendesk.com/api/v2/tickets` and generate the tickets.
 - I separated my concern’s inside lib folder and I tried to stick with object-oriented MVC design to keep my code neat and clean. In which ZendeskApi class deals with API calls and ticket controller displays the user interface.
