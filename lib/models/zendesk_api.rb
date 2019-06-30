@@ -4,9 +4,10 @@ require 'httparty'
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets.
   ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
+  NO_OF_TICKETS_PER_PAGE = 25
   # Here tickets function list upto 25 tickets per page.
   def tickets(page = 1)
-    endpoint = "#{ZENDESK_API_TICKET_URL}?page=#{page}&per_page=25"
+    endpoint = "#{ZENDESK_API_TICKET_URL}?page=#{page}&per_page=#{NO_OF_TICKETS_PER_PAGE}"
     response = HTTParty.get(endpoint, basic_auth: auth)
     if response.code == 404 || response.code == 401
       return {

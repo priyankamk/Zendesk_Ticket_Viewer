@@ -10,20 +10,10 @@
         </li>
       <% end %>
 
+      <% @no_of_pages.times do |page| %>
       <li class="page-item">
-        <a class="page-link" href="/tickets?page=<%= @first_page %>"> <%= @first_page %></a>
-      </li>
-
-      <% if @current_page == 1 || @current_page == 9 %>
-        <a href="/tickets?page=<%= @current_page %>"></a>
-      <% else %>
-        <li class="page-item">
-          <a class="page-link" href="/tickets?page=<%= @current_page %>"> <%= @current_page %></a>
-        </li>
-      <% end %>
-
-      <li class="page-item">
-        <a class="page-link" href="/tickets?page=<%= @last_page %>"> <%= @last_page %></a>
+        <a class="page-link" href="/tickets?page=<%= page+1 %>"> <%= page+1 %></a>
+        <% end %>
       </li>
 
       <% if @next_page %>
