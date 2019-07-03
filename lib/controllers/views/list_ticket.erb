@@ -41,10 +41,10 @@
       <% @tickets.each do |ticket| %>
         <tr class="shadow p-3 mb-5 bg-white rounded">
           <td >
-            <a href="/tickets/<%=ticket['id']%>"><%= ticket.dig('subject')%></a>
+            <a href="/tickets/<%= ticket['id'] %>"><%= ticket.dig('subject') %></a>
           </td>
-          <td><%= ticket.dig('requester_id')%></td>
-          <td><%= ticket.dig('status')%></td>
+          <td><%= ticket.dig('requester_id') %></td>
+          <td><%= ticket.dig('status') %></td>
         </tr>
       <% end %>
     </tbody>

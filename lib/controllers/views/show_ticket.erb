@@ -10,7 +10,7 @@
         <strong>Ticket ID: </strong>
       </dt>
     <dd class="col-sm-9">
-        <%= @ticket['id']%>
+        <%= @ticket['id'] %>
     </dd>
     </p>
     <p>
@@ -18,7 +18,7 @@
         <strong>Requester ID: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['requester_id']%>
+        <%= @ticket['requester_id'] %>
       </dd>
     </p>
     <p>
@@ -26,7 +26,7 @@
         <strong>Assignee ID: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['assignee_id']%>
+        <%= @ticket['assignee_id'] %>
       </dd>
     </p>
     <p>
@@ -50,7 +50,7 @@
         <strong>Status: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['status']%>
+        <%= @ticket['status'] %>
       </dd>
     </p>
     <p>
@@ -58,7 +58,7 @@
         <strong>Ticket Description: </strong>
       </dt>
       <dd class="col-sm-9">
-          <%= @ticket['description']%>
+          <%= @ticket['description'] %>
       </dd>
     </p>
     <p>
@@ -66,10 +66,10 @@
         <strong>Tags: </strong>
       </dt>
       <dd class="col-sm-9">
-          <%= @ticket['tags'].map { |word| word.to_s.prepend("#") }.join(' ') %>
+          <%= @ticket['tags'].map { |tag| tag.to_s.prepend("#") }.join(' ') %>
       </dd>
     </p>
-  <dl class="row">
+  </dl>
 <% elsif @error == "RecordNotFound" %>
   <div class="alert alert-danger mt-5" role="alert">  
     <h3 class="alert-heading">The requested Ticket ID not found in the record.</h3>

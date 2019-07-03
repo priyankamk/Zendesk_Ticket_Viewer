@@ -12,14 +12,8 @@ rescue Errno::ECONNREFUSED
   erb :blocked_by_administrator_error
 end
 
-# Written response because to dig into all tickets
-# as it is a array of hash.
 get '/tickets' do
   response = ZendeskApi.new.tickets(params[:page])
-  # @first_page = 1
-  # @tickets_per_page = 25
-  # @last_page = @count / @tickets_per_page + 1 if @count % @tickets_per_page != 0
-  # @current_page = params[:page].nil? ? @first_page : params[:page].to_i
   @tickets = response.dig('tickets')
   @count = response.dig('count')
   @next_page = response.dig('next_page')
