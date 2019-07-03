@@ -26,6 +26,7 @@
   <% if @tickets.size == 0 %> 
     <div class="alert alert-danger" role="alert">
       <h5 class="text-center mt-1"> No tickets found </h5>
+      <h5 class="text-center mt-1"><a href="javascript:history.go(-1)">Check here: Go back to tickets page</a></h5>
     </div>
   <% else %>
   <table class="table">
@@ -52,15 +53,19 @@
   <br>
 <% elsif @error == "RecordNotFound" %>
   <div class="alert alert-danger mt-5" role="alert">  
-    <h3 class="alert-heading">Oh noes!! The requested Ticket ID not found.</h3>
+    <h3 class="alert-heading">The requested Ticket ID not found in the record.</h3>
+    <a href="javascript:history.go(-1)">Click here: go back to tickets page</a>
   </div>
 <% elsif @error == "InvalidEndpoint" %>
   <div class="alert alert-danger mt-5" role="alert">  
-    <h3 class="alert-heading">Oh noes!! This is not a ValidEndpoint.</h3>
+    <h3 class="alert-heading">This is not a ValidEndpoint.</h3>
+    <a href="javascript:history.go(-1)">Click here: To go back</a>
   </div>
 <% elsif @error == "Couldn't authenticate you" %>
   <div class="alert alert-danger mt-5" role="alert">
     <h3 class="alert-heading">Sorry, Couldn't authenticate you.</h3>
     <hr>
-    <p class="mb-0">Please request authentication credential from the author.</p>
+    <p class="mb-0">Please request authentication credential from the owner.</p>
+    <a href="javascript:history.go(-1)">Click here: To go back</a>
+  </div>
 <% end %>
