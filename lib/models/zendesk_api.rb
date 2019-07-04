@@ -1,9 +1,10 @@
 require 'httparty'
+require 'dotenv'
+Dotenv.load
 # frozen_string_literal: true
 # To connect with zendeskapi and generate tickets using url endpoints.
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets.
-
   ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
   NO_OF_TICKETS_PER_PAGE = 25
 
