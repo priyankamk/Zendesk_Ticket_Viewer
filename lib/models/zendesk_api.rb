@@ -1,9 +1,11 @@
 require 'httparty'
+
 # frozen_string_literal: true
 # To connect with zendeskapi and generate tickets using url endpoints.
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets.
   ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
+
   # Here tickets function list upto 25 tickets per page.
   def tickets(page = 1)
     endpoint = "#{ZENDESK_API_TICKET_URL}?page=#{page}&per_page=25"
