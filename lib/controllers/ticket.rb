@@ -15,7 +15,7 @@ end
 get '/tickets' do
   response = ZendeskApi.new.tickets(params[:page])
   @tickets = response.dig('tickets')
-  @count = response.dig('count')
+  @count = response.dig('count') || 25
   @next_page = response.dig('next_page')
   @previous_page = response.dig('previous_page')
   @no_of_pages = @count / ZendeskApi::NO_OF_TICKETS_PER_PAGE
