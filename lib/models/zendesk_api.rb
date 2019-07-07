@@ -1,6 +1,7 @@
 require 'httparty'
 require 'dotenv'
 Dotenv.load
+
 # frozen_string_literal: true
 # To connect with zendeskapi and generate tickets using url endpoints.
 class ZendeskApi
@@ -8,7 +9,6 @@ class ZendeskApi
   # created constant for number of tickets.
   ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
   NO_OF_TICKETS_PER_PAGE = 25
-
   # Here tickets function list upto 25 tickets per page.
   def tickets(page = 1)
     endpoint = "#{ZENDESK_API_TICKET_URL}?page=#{page}&per_page=#{NO_OF_TICKETS_PER_PAGE}"
