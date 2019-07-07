@@ -73,19 +73,21 @@
 <% elsif @error == "RecordNotFound" %>
   <div class="alert alert-danger mt-5" role="alert">  
     <h3 class="alert-heading">The requested Ticket ID not found in the record.</h3>
-    <a href="javascript:history.go(-1)">Click here: go back to tickets page</a>
+    <hr>
+    <p class="mb-0">Please enter valid ID.</p>
+    <a href="javascript:history.go(-1)">Click here: go back to ticket page</a>
   </div>
 <% elsif @error == "InvalidEndpoint" %>
   <div class="alert alert-danger mt-5" role="alert">  
     <h3 class="alert-heading">This is not a ValidEndpoint.</h3>
-    <a href="javascript:history.go(-1)">Click here: To go back</a>
+    <a href="javascript:history.go(-1)">Click here: to go back</a>
   </div>
 <% elsif @error == "Couldn't authenticate you" %>
   <div class="alert alert-danger mt-5" role="alert">
-    <h3 class="alert-heading">Sorry, Couldn't authenticate you.</h3>
+    <h3 class="alert-heading">Sorry, couldn't authenticate you.</h3>
     <hr>
     <p class="mb-0">Please request authentication credential from the owner.</p>
-    <a href="javascript:history.go(-1)">Click here: To go back</a>
+    <a href="javascript:history.go(-1)">Click here: to go back</a>
   </div>
 <% end %>
 
