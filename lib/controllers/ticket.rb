@@ -13,7 +13,7 @@ rescue Errno::ECONNREFUSED
 end
 
 get '/tickets' do
-  response = ZendeskApi.new.tickets(params[:page])
+  response = ZendeskApi.new.tickets(params[:page].to_i)
   @tickets = response.dig('tickets')
   @count = response.dig('count') || 25
   @next_page = response.dig('next_page')
