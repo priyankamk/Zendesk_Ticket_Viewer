@@ -5,6 +5,7 @@ Dotenv.load
 # To connect with zendeskapi and generate tickets using url endpoints.
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets.
+  # created constant for number of tickets.
   ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
   NO_OF_TICKETS_PER_PAGE = 25
 
