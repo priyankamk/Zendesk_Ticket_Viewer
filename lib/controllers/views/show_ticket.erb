@@ -1,6 +1,7 @@
 <% if @error.nil? %>
   <h1><%= @ticket['subject'] %></h1> 
-  <a href="/tickets?page=1" class="btn btn-outline-warning" role="button">Back to all tickets</a>
+
+  <a href="javascript:history.go(-1)" class="btn btn-outline-warning" role="button">Go Back</a>
   <br>
   <br>
   <dl class="row">
@@ -9,7 +10,7 @@
         <strong>Ticket ID: </strong>
       </dt>
     <dd class="col-sm-9">
-        <%= @ticket['id']%>
+        <%= @ticket['id'] %>
     </dd>
     </p>
     <p>
@@ -17,7 +18,7 @@
         <strong>Requester ID: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['requester_id']%>
+        <%= @ticket['requester_id'] %>
       </dd>
     </p>
     <p>
@@ -25,7 +26,7 @@
         <strong>Assignee ID: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['assignee_id']%>
+        <%= @ticket['assignee_id'] %>
       </dd>
     </p>
     <p>
@@ -49,7 +50,7 @@
         <strong>Status: </strong>
       </dt>
       <dd class="col-sm-9">
-        <%= @ticket['status']%>
+        <%= @ticket['status'] %>
       </dd>
     </p>
     <p>
@@ -57,7 +58,7 @@
         <strong>Ticket Description: </strong>
       </dt>
       <dd class="col-sm-9">
-          <%= @ticket['description']%>
+          <%= @ticket['description'] %>
       </dd>
     </p>
     <p>
@@ -65,22 +66,26 @@
         <strong>Tags: </strong>
       </dt>
       <dd class="col-sm-9">
-          <%= @ticket['tags'].map { |word| word.to_s.prepend("#")}.join(' ') %>
+          <%= @ticket['tags'].map { |tag| tag.to_s.prepend("#") }.join(' ') %>
       </dd>
     </p>
-  <dl class="row">
+  </dl>
 <% elsif @error == "RecordNotFound" %>
   <div class="alert alert-danger mt-5" role="alert">  
     <h3 class="alert-heading">The requested Ticket ID not found in the record.</h3>
+    <a href="javascript:history.go(-1)">Click here: go back to tickets page</a>
   </div>
 <% elsif @error == "InvalidEndpoint" %>
   <div class="alert alert-danger mt-5" role="alert">  
-    <h3 class="alert-heading">Oh noes!! This is not a ValidEndpoint.</h3>
+    <h3 class="alert-heading">This is not a ValidEndpoint.</h3>
+    <a href="javascript:history.go(-1)">Click here: To go back</a>
   </div>
 <% elsif @error == "Couldn't authenticate you" %>
   <div class="alert alert-danger mt-5" role="alert">
     <h3 class="alert-heading">Sorry, Couldn't authenticate you.</h3>
     <hr>
-    <p class="mb-0">Please request authentication credential from the author.</p>
+    <p class="mb-0">Please request authentication credential from the owner.</p>
+    <a href="javascript:history.go(-1)">Click here: To go back</a>
+  </div>
 <% end %>
 

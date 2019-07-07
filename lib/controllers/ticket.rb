@@ -14,14 +14,11 @@ end
 
 get '/tickets' do
   response = ZendeskApi.new.tickets(params[:page])
-  @first_page = 1
-  @tickets_per_page = 25
   @tickets = response.dig('tickets')
   @count = response.dig('count')
-  @last_page = @count / @tickets_per_page + 1 if @count % @tickets_per_page != 0
-  @current_page = params[:page].nil? ? @first_page : params[:page].to_i
   @next_page = response.dig('next_page')
   @previous_page = response.dig('previous_page')
+  @no_of_pages = @count / ZendeskApi::NO_OF_TICKETS_PER_PAGE
   @error = response['error_message']
   erb :list_ticket
 rescue SocketError
