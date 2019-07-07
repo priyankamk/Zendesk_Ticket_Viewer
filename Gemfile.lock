@@ -64,10 +64,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug (~> 11.0, >= 11.0.1)
-<<<<<<< HEAD
   dotenv (~> 2.7, >= 2.7.4)
-=======
->>>>>>> 4155a950b8ab557908091723c7ee42d595f8b7f2
   httparty (~> 0.17.0)
   rack-test (~> 1.1)
   rspec (~> 3.8)
