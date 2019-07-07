@@ -7,7 +7,7 @@ Dotenv.load
 class ZendeskApi
   # I used bacic_auth to login everytime and access the tickets.
   # created constant for number of tickets.
-  ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'
+  ZENDESK_API_TICKET_URL = 'https://priyankamukundmk.zendesk.com/api/v2/tickets.json'.freeze
   NO_OF_TICKETS_PER_PAGE = 25
   # Here tickets function list upto 25 tickets per page.
   def tickets(page = 1)
@@ -41,6 +41,6 @@ class ZendeskApi
     {
       username: ENV['USERNAME'],
       password: ENV['PASSWORD']
-    }
+    }.freeze
   end
 end
